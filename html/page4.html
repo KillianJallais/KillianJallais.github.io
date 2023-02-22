@@ -1,0 +1,149 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Killian Jallais">
+
+    <title>Bruit de Perlin</title>
+    <link rel="stylesheet" href="../css/page4_style.css">
+    <script src="../js/javascript.js"></script>
+</head>
+
+<body onload="time()">
+	<div class="top">
+		<div class="title">
+			Implémentation du<br/>
+			bruit de Perlin
+		</div>
+
+		<div class="nav">
+			<ul>
+				<li>
+					Organisation du site :
+				</li>
+
+				<li>
+					<input type="button" value="La découverte"  onclick="window.location.href='../index.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Ses utilisations" onclick="window.location.href='page2.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Algorithme" onclick="window.location.href='page3.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Implémentation">
+				</li>
+
+				<li>
+					<input type="button" value="Le logo du site" onclick="window.location.href='page5.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Aide" onclick="window.location.href='page6.html'">
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="corp">
+
+		<h3>Implémentation en python :</h3>
+
+		<p>
+			On a vu dans la page précédente comment le bruit de Perlin fonctionne, dans cette partie, on vas voir une implémentation du bruit de Perlin en 2D dans le langage python.
+		</p>
+
+		<label id="c_title">L'implémentation :</label><br/>
+
+		<br/>
+
+		<pre id="implementation">
+			<br/>
+class PerlinNoise2D:
+
+	def __init__(self, octaves = 1, seed=None):
+		if seed == None:
+			seed = random.randint(0, 10**5)
+
+		self.table = [i for i in range(511)]
+		random.seed(seed)
+		random.shuffle(self.table, random.random)
+		self.table.extend(self.table)
+
+		self.octaves = octaves
+
+		self.vecteurs = [(1, 1), (-1, 1), (1, -1), (-1, -1)]
+
+	def ease(self, x):
+		return 6*x**5-15*x**4+10*x**3
+
+	def interpole(self, start, end, t):
+		return start + t*(end - start)
+
+	def valueAt(self, x, y):
+		x = x*self.octaves
+		y = y*self.octaves
+
+		self.dots = self.dot_calcule(x, y)
+
+		FracX = self.ease(x - int(x))
+		FracY = self.ease(y - int(y))
+
+		AB = self.interpole(self.dots[0], self.dots[1], FracX)
+		CD = self.interpole(self.dots[2], self.dots[3], FracX)
+
+		value = self.interpole(AB, CD, FracY)
+		return value
+
+	def dot_calcule(self, x, y):
+		x0 = int(x) & 511
+		y0 = int(y) & 511
+
+		x1 = (int(x) + 1) & 511
+		y1 = (int(y) + 1) & 511
+
+		grad1 = self.table[x0 + self.table[y0]]%4
+		grad2 = self.table[x1 + self.table[y0]]%4
+		grad3 = self.table[x0 + self.table[y1]]%4
+		grad4 = self.table[x1 + self.table[y1]]%4
+
+		grad1 = self.vecteurs[grad1]
+		grad2 = self.vecteurs[grad2]
+		grad3 = self.vecteurs[grad3]
+		grad4 = self.vecteurs[grad4]
+
+		d1 = (x - int(x), y - int(y))
+		d2 = (x - (int(x) + 1), y - int(y))
+		d3 = (x - int(x), y - (int(y) + 1))
+		d4 = (x - (int(x) + 1), y - (int(y) + 1))
+
+		dot1 = d1[0]*grad1[0] + d1[1]*grad1[1]
+		dot2 = d2[0]*grad2[0] + d2[1]*grad2[1]
+		dot3 = d3[0]*grad3[0] + d3[1]*grad3[1]
+		dot4 = d4[0]*grad4[0] + d4[1]*grad4[1]
+
+		return (dot1, dot2, dot3, dot4)
+		</pre>
+
+		<p>
+			Sans trop entrer dans les détailles car cette implémentation suit les étapes présentés dans la page précédente, la fonction dot_calcule renvoi les valeurs des produits scalaires, la fonction ease renvoi la valeur rentré après l'avoir fait passer dans une fonction dont la dérivé est nulle en 0 et 1 puis la fonction interpole renvoie simplement l'interpolation linéaire d'une valeur entre deux coordonées.
+		</p>
+	</div>
+
+	<br/>
+
+	<input class="bouton" id="retour" type="button" value="Page Précédante" onclick="window.location.href='page3.html'">
+	<input class="bouton" id="suivant" type="button" value="Page Suivante" onclick="window.location.href='page5.html'">
+
+	<br/>
+
+	<label id="time"></label>
+</body>
+
+</html>

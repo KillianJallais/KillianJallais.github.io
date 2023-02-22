@@ -1,0 +1,122 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Killian Jallais">
+
+    <title>Bruit de Perlin</title>
+    <link rel="stylesheet" href="css/index_style.css">
+    <script src="js/javascript.js"></script>
+</head>
+
+<body onload="time()">
+	<div class="top">
+		<div class="title">
+			<label>
+				Introduction au<br/>
+				bruit de Perlin
+			</label>
+		</div>
+
+		<div class="nav">
+			<ul>
+				<li>
+					Organisation du site :
+				</li>
+
+				<li>
+					<input type="button" value="La découverte">
+				</li>
+
+				<li>
+					<input type="button" value="Ses utilisations" onclick="window.location.href='html/page2.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Algorithme" onclick="window.location.href='html/page3.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Implémentation" onclick="window.location.href='html/page4.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Le logo du site" onclick="window.location.href='html/page5.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Aide" onclick="window.location.href='html/page6.html'">
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="corp">
+
+		<h3>La découverte :</h3>
+
+		<p>
+			Le buit de Perlin à été découvert en 1985 par Ken Perlin. Celui-ci l'a créer alors qu'il travallait sur les effets spéciaux d'un film. Il voulais éviter le style "machinique" de l'époque. Cependant, il était limité au niveaux des textures à cause de la mémoire des ordinateurs qu'il utilisait. Il ne pouvais pas en stocker suffisament, il à donc réfléchit à un moyen de créer des textures de manière procédurale. De la sorte, il n'aurait pas besoin de beaucoup d'espace de stockage, car il suffirait de stocker l'algorithme parmettant de créer les textures. C'est donc dans ce contexte que il créera le bruit de Perlin.
+		</p>
+
+		<h3>Fonctionnement et explications :</h3>
+
+		<p>
+			Le bruit de Perlin consiste en la génération de manière procédurale d'une texture qui sera par la suite utilisé dans de nombreux cas d'usage. Pour comprendre en quoi consiste le bruit de Perlin, il faut avant tous comprendre ce qu'est une fonction de bruit. Une fonction de bruit est une fonction qui vas de N dans R et qui renvoie des valeurs <a href="https://fr.wikipedia.org/wiki/Pseudo-al%C3%A9atoire" target="_blank">pseudo-aléatoire</a>. C'est à dire des valeurs qui sembles aléatoire et donc non prévisible.<br/>
+			Comme on peut le voir sur les images ci-dessous, les valeurs ne sembles suivrent aucune logique et êtres chaotiques.
+		</p>
+
+		<figure id="aleatoire1D">
+			<img class="image" src="media/imgs/bruit_aleatoire_1D.png" alt="Image d'une fonction aléatoire en 1 dimension"/>
+			<figcaption>Bruit aléatoire 1D</figcaption>
+		</figure>
+
+		<figure id="aleatoire2D">
+			<img class="image" src="media/imgs/bruit_aleatoire_2D.png" alt="Image d'une fonction aléatoire en 2 dimensions"/>
+			<figcaption>Bruit aléatoire 2D</figcaption>
+		</figure>
+
+		<br style="clear:both"/>
+
+		<p>
+			Afin de mieux comprendre les images en 2D, il faut savoir que chaque pixel possède une valeur aléatoire entre -1 et 1 et que plus la valeur est proche de 1, plus il est noir, et inversement, plus c'est proche de -1, plus il est blanc.
+		</p>
+
+		<p>
+			Dans le cas du bruit de Perlin, la fonction de bruit renvoie des valeurs aléatoire mais cohérente. Cela signifie que le comportement globale de la fonction est imprévisible mais lorsque l'on rentre des valeurs proches les unes des autres dans la fonction, on obtient des valeurs proches les unes des autres en sortie. Cela permet d'obtenir une sorte de cohérence dans le résultat final.<br/>
+			Il faut imaginer que notre fonction de bruit évolue en fonction du temps, cela siginie que si on choisit deux valeurs dans un petit intervalle de temps, alors elles auront une images proches. Mais au contraire, si on choisit deux valeurs dans un intervalle de temps arbitrairement grand, alors les images des deux valeurs peuvent êtres arbitrairement éloignées l'une de l'autre.<br/>
+			Le plus souvent, le bruit de Perlin est utilisé en 2 ou 3 dimensions mais il est important de savoir qu'il peut être implémenté dans un nombre de dimension infiniment grand.<br/>
+			On peut voir ce phénomène dans les images ci-dessous.
+		</p>
+
+		<figure id="perlin1D">
+			<img class="image" src="media/imgs/bruit_de_perlin_1D.png" alt="Image de la fonction de bruit du bruit de Perlin en 1 dimension" onclick="agrandit()" />
+			<figcaption>Bruit de perlin 1D</figcaption>
+		</figure>
+
+		<figure id="perlin2D">
+			<img class="image" src="media/imgs/bruit_de_perlin_2D.png" alt="Image de la fonction de bruit du bruit de Perlin en 2 dimensions"/>
+			<figcaption>Bruit de perlin 2D</figcaption>
+		</figure>
+
+		<br style="clear:both"/>
+
+		<p>
+			Dans le cas ou vous seriez curieux de savoir quelle son fait le bruit de Perlin :
+		</p>
+		<audio controls src="media/sound/noise.ogv"></audio>
+	</div>
+
+	<br/>
+
+	<input class="bouton" id="retour" type="button" value="Page Précédante">
+	<input class="bouton" id="suivant" type="button" value="Page Suivante"  onclick="window.location.href='html/page2.html'">
+
+	<br/>
+
+	<label id="time"></label>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Killian Jallais">
+
+    <title>Bruit de Perlin</title>
+    <link rel="stylesheet" href="../css/page6_style.css">
+    <script src="../js/javascript.js"></script>
+</head>
+
+<body onload="time()">
+	<div class="top">
+		<div class="title">
+			<br/>
+			Aide
+		</div>
+
+		<div class="nav">
+			<ul>
+				<li>
+					Organisation du site :
+				</li>
+
+				<li>
+					<input type="button" value="La découverte"  onclick="window.location.href='../index.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Ses utilisations" onclick="window.location.href='page2.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Algorithme" onclick="window.location.href='page3.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Implémentation" onclick="window.location.href='page4.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Le logo du site" onclick="window.location.href='page5.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Aide">
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="corp">
+		<h3>Cette page est un formulaire d'aide :</h3>
+
+		<p>Renseigner les informations suivantes afin de recevoir de l'aide :</p>
+
+		<form onsubmit="return verif()" name="formulaire">
+			<table>
+				<tr>
+					<td>
+						<label for="name">Entrer votre nom :</label>
+						<input type="text" id="name" class="entry">
+					</td>
+
+					<td>
+						<label for="first_name">Entrer votre prénom :</label>
+						<input type="text" id="first_name" name="first_name" class="entry">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label for="email">Entrer votre adresse mail :</label>
+						<input type="email" id="email" class="entry">
+					</td>
+
+					<td>
+						<label for="tel">Entrer votre numéro de téléphone :</label>
+						<input type="tel" id="tel" class="entry">
+					</td>
+				</tr>
+			</table>
+
+			<br/>
+
+			<label>Renseigner votre question :</label><br/>
+			<textarea rows="10" cols="50"></textarea>
+
+			<div id="boutons">
+				<input type="reset" id="reset" value="Reset" class="bouton_form">
+				<input type="submit" id="send" value="Envoyer" class="bouton_form">
+			</div>
+		</form>
+	</div>
+
+	<br/>
+
+	<input class="bouton" id="retour" type="button" value="Page Précédante" onclick="window.location.href='page5.html'">
+	<input class="bouton" id="suivant" type="button" value="Page Suivante">
+
+	<br/>
+
+	<label id="time"></label>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Killian Jallais">
+
+    <title>Bruit de Perlin</title>
+    <link rel="stylesheet" href="../css/page2_style.css">
+    <script src="../js/javascript.js"></script>
+</head>
+
+<body onload="time()">
+	<div class="top">
+		<div class="title">
+			Les utilisations du<br/>
+			bruit de Perlin
+		</div>
+
+		<div class="nav">
+			<ul>
+				<li>
+					Organisation du site :
+				</li>
+
+				<li>
+					<input type="button" value="La découverte"  onclick="window.location.href='../index.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Ses utilisations">
+				</li>
+
+				<li>
+					<input type="button" value="Algorithme" onclick="window.location.href='page3.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Implémentation" onclick="window.location.href='page4.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Le logo du site" onclick="window.location.href='page5.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Aide" onclick="window.location.href='page6.html'">
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="corp">
+		<h3>Dans le cinéma :</h3>
+
+		<p>
+			Comme dit dans l'introduction, le bruit de Perlin à été inventé dans le but de créer des textures de manière procédurale. Son grand avantage est l'economie de place qu'il permet de réaliser car il ne nécéssite pas de stocker d'image. On peut donc grâce au bruit de Perlin créer diverse texture au rendu naturel comme du bois, de la lave, de l'eau, du feu et bien d'autres.
+		</p>
+
+		<figure id="feu_image">
+			<img class="media" src="../media/imgs/feu_perlin_image.jpg" alt="Texture de feu créée à partir du bruit de Perlin"/>
+			<figcaption>Feu créer avec le bruit de Perlin</figcaption>
+		</figure>
+
+		<figure id="feu_video">
+			<video class="media" controls>
+				<source src="../media/vid/feu_perlin_video.webm" type="video/ogg">
+			</video>
+			<figcaption>Feu créer avec le bruit de Perlin</figcaption>
+		</figure>
+
+		<br style="clear:both"/>
+
+		<h3>Dans le jeux vidéo :</h3>
+
+		<p>
+			Les propriétés du bruit de Perlin ne sont pas utiles que dans l'audio visuel mais également dans d'autres domaines et notamment le jeux vidéo. Il permet entres autres la génération de terrain aléatoire dans de nombreux jeux, le plus connue étant minecraft. Dans ce cas de figure, on vas surtout s'intérresser au bruit de Perlin en 2D. Grâce au bruit de Perlin en 2D, on peut créer une noise map comme vue dans la présentation qui se présente sous la forme de gradient de gris. Grâce à celle-ci, on vas créer le terrain en disant que les zones les plus foncés seront les zones surélevés et que au contraire, les zones les plus claires seront les zones les plus profondes. En d'autres termes, la couleur de la noise map à un endroit précis determines la hauteur que le terrain aura à ce même endroit.<br/>
+			L'usage de cette texture est ingénieux car il permet la génération d'un monde cohérent dans le jeu.
+		</p>
+
+		<figure id="terrain">
+			<img class="media" src="../media/imgs/terrain.jpg" alt="Exemple de terrain générer à l'aide du bruit de Perlin"/>
+			<figcaption>Terrain créer avec le bruit de Perlin</figcaption>
+		</figure>
+
+		<br/>
+
+		<h3>Autres cas d'utilisations :</h3>
+
+		<p>
+			Le bruit de Perlin a été très largement utilisé dans les films, les jeux, les démos et les générateurs de paysages. Cepedant, ces utilisations en dehors de ces domaines là se font rares malgré sa popularité. Mais cette <a href="https://lac.linuxaudio.org/2018/pdf/14-paper.pdf" target="_blank">article</a> parlant de l'utilisation du bruit de Perlin et du mouvement brownien fractionnel pour des applications de synthèse sonore démontre que l'on peut l'utiliser dans de nombreux domaines grâces aux propriétés qu'il possède.
+		</p>
+
+		<table>
+			<thead>
+				<tr>
+					<th colspan="2">
+						Cas d'utilisation
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Dans l'audiovisuel</td>
+					<td><img class="check" src="../media/imgs/check.png" alt="check"/></td>
+				</tr>
+				<tr>
+					<td>La génération de paysages</td>
+					<td><img class="check" src="../media/imgs/check.png" alt="check"/></td>
+				</tr>
+				<tr>
+					<td>Dans le jeux vidéo</td>
+					<td><img class="check" src="../media/imgs/check.png" alt="check"/></td>
+				</tr>
+			</tbody>
+
+			<tfoot>
+				<tr>
+					<th colspan="2">
+						Mais aussi dans bien d'autres ...
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	<br/>
+
+	<input class="bouton" id="retour" type="button" value="Page Précédante" onclick="window.location.href='../index.html'">
+	<input class="bouton" id="suivant" type="button" value="Page Suivante" onclick="window.location.href='page3.html'">
+
+	<br/>
+
+	<label id="time"></label>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Killian Jallais">
+
+    <title>Bruit de Perlin</title>
+    <link rel="stylesheet" href="../css/page5_style.css">
+    <script src="../js/javascript.js"></script>
+</head>
+
+<body onload="time(); draw()">
+	<div class="top">
+		<div class="title">
+			Logo du<br/>
+			site
+		</div>
+
+		<div class="nav">
+			<ul>
+				<li>
+					Organisation du site :
+				</li>
+
+				<li>
+					<input type="button" value="La découverte"  onclick="window.location.href='../index.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Ses utilisations" onclick="window.location.href='page2.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Algorithme" onclick="window.location.href='page3.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Implémentation" onclick="window.location.href='page4.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Le logo du site">
+				</li>
+
+				<li>
+					<input type="button" value="Aide" onclick="window.location.href='page6.html'">
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="corp">
+		<h3>Le logo :</h3>
+
+		<canvas id="canvas" width="300" height="300"></canvas><br/>
+
+		<br/>
+
+		<h3>Menu utilisateur :</h3>
+
+		<input type="checkbox" name="check" id="check">
+		<label for="check">Afficher les points de contrôles</label>
+
+		<br/>
+
+		<label for="color">Entrer une valeur entre 0 et 1 pour changer la couleur :</label>
+		<input type="text" name="color" id="color">
+
+		<br/>
+
+		<label for="size">Choisir l'épaisseur de la lettre :</label>
+		<select id="size">
+			<option value="">--Sélectionnez une taille--</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+		</select>
+
+		<br/>
+
+		<input type="button" value="Appliquer les modifications" onclick="draw()" id="modif">
+
+		<h3>Explication du logo :</h3>
+
+		<p>
+			Le logo représente la lettre J manuscrite. La lettre en elle-même est intégralement faite à l'aide des courbes de Bezier. Elle est constitué de 3 courbes de degré 3.<br/>
+			La forme autour de la lettre est constitué de courbe de Bezier de degré 1 (afin de faire les lignes droites) et de degré 2 (afin de faire les coins courbés)<br/>
+			Avec le bouton en dessous du logo, vous pouvez faire apparaître les points de contrôles (en rouge) et les points de départ et d'arrivé (en bleu) des courbes.
+		</p>
+	</div>
+
+	<br/>
+
+	<input class="bouton" id="retour" type="button" value="Page Précédante" onclick="window.location.href='page4.html'">
+	<input class="bouton" id="suivant" type="button" value="Page Suivante" onclick="window.location.href='page6.html'">
+
+	<br/>
+
+	<label id="time"></label>
+</body>
+
+</html>

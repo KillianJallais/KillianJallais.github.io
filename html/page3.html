@@ -1,0 +1,187 @@
+<!doctype html>
+
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Killian Jallais">
+
+    <title>Bruit de Perlin</title>
+    <link rel="stylesheet" href="../css/page3_style.css">
+    <script src="../js/javascript.js"></script>
+</head>
+
+<body onload="time()">
+	<div class="top">
+		<div class="title">
+			Algorithme du<br/>
+			bruit de Perlin
+		</div>
+
+		<div class="nav">
+			<ul>
+				<li>
+					Organisation du site :
+				</li>
+
+				<li>
+					<input type="button" value="La découverte"  onclick="window.location.href='../index.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Ses utilisations" onclick="window.location.href='page2.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Algorithme">
+				</li>
+
+				<li>
+					<input type="button" value="Implémentation" onclick="window.location.href='page4.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Le logo du site" onclick="window.location.href='page5.html'">
+				</li>
+
+				<li>
+					<input type="button" value="Aide" onclick="window.location.href='page6.html'">
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="corp">
+		<h3>Explication :</h3>
+
+		<p>
+			Dans cette page, on vas voir comment implémenter le bruit de Perlin en deux dimensions sans trop entrer dans les détailles. On vas voir étapes par étapes comment le bruit de Perlin fonctionne.<br/>
+			Il y a trois étapes principales :
+		</p>
+
+			<ul>
+				<li>
+					La définitions de la grille
+				</li>
+				<li>
+					Le calcules du <a href="https://www.maths-et-tiques.fr/telech/ProduitScal.pdf">produit scalaire</a> entre le vecteur de gradient et le vecteur distance
+				</li>
+				<li>
+					L'interpolation entre les valeurs
+				</li>
+			</ul>
+
+		<h3>La définition de la grille :</h3>
+
+		<p>
+			Il faut tous d'abors imaginer un espace plat en deux dimansions sur le quelle on vas mettre une grille. Le but est de calculer la valeur de chaque pixel de cette espace. Pour cela, on vas donner à chaque intersections de la grille un vecteur gradient de manière aléatoire. Il est important que une fois définis, les vecteurs de la grille ne change pas de valeur dans le cas ou l'on voudrais obtenir le même résultat plusieurs fois.<br/>
+		</p>
+
+			<figure id="espace2D">
+				<img class="media" src="../media/imgs/espace_2D.png" alt="Espace en deux dimensions"/>
+				<figcaption>Espace 2D</figcaption>
+			</figure>
+
+			<figure id="grille2D">
+				<img class="media" src="../media/imgs/grille_2D.png" alt="Grille"/>
+				<figcaption>Application de la grille</figcaption>
+			</figure>
+
+			<figure id="gradient">
+				<img class="media" src="../media/imgs/vecteur_gradient.png" alt="Définition de vecteurs gradients"/>
+				<figcaption>Définitions des vecteurs gradients</figcaption>
+			</figure>
+
+			<br style="clear:both"/>
+
+		<h3>La calcule des produits scalaires :</h3>
+
+		<p>
+			Dans la deuxième étapes, le but est de calculer le produit scalaire. Pour cela, on vas pour les quatres intersections les plus proches du pixel dont on veut la valeur determiner un vecteur distance entre le pixel et l'intersection. On vas ensuites pour les quatres intersections faire le produit scalaire entre le vecteur gradient et le vecteur distance.<br/>
+		</p>
+
+			<figure id="distance">
+				<img class="media" src="../media/imgs/vecteur_distance.png" alt="Définition de vecteurs distances"/>
+				<figcaption>Définitions des vecteurs distances <br/> (Par rapport au pixel rouge)</figcaption>
+			</figure>
+
+			<figure id="produit_scalaire">
+				<a href="https://fr.wikipedia.org/wiki/Produit_scalaire#:~:text=En%20math%C3%A9matiques%2C%20et%20plus%20pr%C3%A9cis%C3%A9ment,bilin%C3%A9aire%2C%20sym%C3%A9trique%2C%20d%C3%A9finie%20positive." target="_blank"><img class="media" src="../media/imgs/produit_scalaire.png" alt="Calcule des produits scalaires"/></a>
+				<figcaption>Calcule des produits scalaires</figcaption>
+			</figure>
+
+			<br style="clear:both;"/>
+
+		<h3>L'interpolation</h3>
+
+		<p>
+			La dernière étapes est l'interpolation entre les produits scalaire des sommets de la grille. Pour cela, il faut prendre les parties fractionnaires des coordonnées du pixel puis les passer dans une fonction dont la dérivée première est nulle en 0 et 1. On fait ensuite une interpolation linéaire de la coordonée transformé X entre le premier produit scalaire et le deuxième puis entre le troisième produit scalaire et le quatrième et enfin une dernière interpolation linéaire de la coordonée tranformé Y entre les deux résultats obtenues. La valeur final du pixel est cette dernière interpolation.
+		</p>
+
+		<h3>Exemple d'interpolation :</h3>
+
+		<table>
+
+			<thead>
+				<tr>
+					<th colspan="2">Entrez les valeurs suivantes afin d'avoir un exemple d'interpolation.</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>
+						<label for="A">Entrer le premier sommet :</label>
+						<input type="text" name="A" id="A">
+					</td>
+
+					<td>
+						<label for="B">Entrer le deuxième sommet :</label>
+						<input type="text" name="B" id="B">
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<label for="C">Entrer le troisième sommet :</label>
+						<input type="text" name="C" id="C">
+					</td>
+
+					<td>
+						<label for="D">Entrer le quatrième sommet :</label>
+						<input type="text" name="D" id="D">
+					</td>				
+				</tr>
+
+				<tr>
+					<td>
+						<label for="X">Coordonnée X de la valeur :</label>
+						<input type="text" name="X" id="X">
+					</td>
+
+					<td>
+						<label for="Y">Coordonnée Y de la valeur :</label>
+						<input type="text" name="Y" id="Y">
+					</td>
+				</tr>
+			</tbody>
+
+			<tfoot>
+				<tr>
+					<th colspan="2"><input type="button" value="Cliquer ici pour calculer la valeur" onclick="calcule_interpolation()"></th>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+
+	<br/>
+
+	<input class="bouton" id="retour" type="button" value="Page Précédante" onclick="window.location.href='page2.html'">
+	<input class="bouton" id="suivant" type="button" value="Page Suivante" onclick="window.location.href='page4.html'">
+
+	<br/>
+
+	<label id="time"></label>
+</body>
+
+</html>
